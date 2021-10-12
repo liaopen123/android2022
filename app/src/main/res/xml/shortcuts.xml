@@ -1,0 +1,38 @@
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="wholehose"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/todayhouse"
+        android:shortcutLongLabel="@string/todayhouse_full"
+        android:shortcutDisabledMessage="@string/todayhouse_disable">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.android2022"
+            android:targetClass="com.example.android2022.MainActivity" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="wholehose2"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/todayhouse2"
+        android:shortcutLongLabel="@string/todayhouse_full"
+        android:shortcutDisabledMessage="@string/todayhouse_disable">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.android2022"
+            android:targetClass="com.example.android2022.MainActivity2" />
+        <!-- If your shortcut is associated with multiple intents, include them
+             here. The last intent in the list determines what the user sees when
+             they launch this shortcut. -->
+        <categories android:name="android.shortcut.conversation" />
+        <capability-binding android:key="actions.intent.CREATE_MESSAGE" />
+    </shortcut>
+    <!-- Specify more shortcuts here. -->
+</shortcuts>
