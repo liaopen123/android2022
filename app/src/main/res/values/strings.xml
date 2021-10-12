@@ -4,4 +4,7 @@
     <string name="todayhouse2">今日整屋2</string>
     <string name="todayhouse_full">今日整屋-大屏幕展示版</string>
     <string name="todayhouse_disable">暂时无法使用</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
 </resources>
