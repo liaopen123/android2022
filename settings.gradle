@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "android2022"
 include ':app'
 include ':floatwindow'
+include ':networkrequestreport'

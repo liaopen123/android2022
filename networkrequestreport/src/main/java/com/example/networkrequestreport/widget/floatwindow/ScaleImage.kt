@@ -1,4 +1,4 @@
-package com.example.floatwindow
+package com.example.networkrequestreport.widget.floatwindow
 
 import android.annotation.SuppressLint
 import android.content.Context

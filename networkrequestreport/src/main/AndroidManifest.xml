@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.floatwindow">
+    package="com.example.networkrequestreport">
 
     <application
-        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -11,22 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android2022">
         <activity
-            android:name=".SecondFloatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".FirstFloatActivity"
-            android:exported="true" >
+            android:name=".ui.network_detail.NetworkDetailsActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Android2022.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
 
-        </activity>
     </application>
 
 </manifest>
