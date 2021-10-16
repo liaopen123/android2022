@@ -3,9 +3,7 @@ package com.example.networkrequestreport.report.intercept
 
 import com.example.networkrequestreport.report.NetWorkReport
 import com.example.networkrequestreport.report.NetworkReportQueue
-import com.example.networkrequestreport.report.entity.NetworkQueue
-import com.example.networkrequestreport.report.entity.ReportRequest
-import com.example.networkrequestreport.report.entity.ReportResponse
+import com.example.networkrequestreport.report.entity.*
 import com.example.networkrequestreport.utils.BlackListUtils
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -22,7 +20,7 @@ class ReportIntercept @JvmOverloads constructor() : Interceptor {
         if (!NetWorkReport.canReport|| BlackListUtils.contain("${request.url()}")) {
             return chain.proceed(request)
         }
-        val reportRequest = ReportRequest(chain)
+        val reportRequest = ReportRequestBuilder(chain).build()
         val startNs = System.nanoTime()
         val response: Response
         try {
@@ -32,7 +30,7 @@ class ReportIntercept @JvmOverloads constructor() : Interceptor {
             throw e
         }
         val tookMs = TimeUnit.NANOSECONDS.toMillis(System.nanoTime() - startNs)
-        val reportResponse = ReportResponse(response, tookMs)
+        val reportResponse = ReportResponseBuilder(response, tookMs).build()
         //add and dispatch
         NetworkReportQueue.add(NetworkQueue(reportRequest, reportResponse))
         return response

@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
 
-    <com.example.networkrequestreport.widget.floatwindow.DragLayout
+    <com.example.networkrequestreport.widget.floatwindow.FloatDragLayout
         android:id="@+id/rlContent"
         android:layout_width="180dp"
         android:layout_height="100dp"
@@ -37,5 +37,5 @@
             android:layout_height="match_parent"
             android:layout_margin="30dp"
             android:background="@color/white" />
-    </com.example.networkrequestreport.widget.floatwindow.DragLayout>
+    </com.example.networkrequestreport.widget.floatwindow.FloatDragLayout>
 </FrameLayout>

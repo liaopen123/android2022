@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 
 
-class DragLayout(context: Context, attrs: AttributeSet? = null) :RelativeLayout(context, attrs) {
+class FloatDragLayout(context: Context, attrs: AttributeSet? = null) :RelativeLayout(context, attrs) {
     private var lastX = 0
     private var lastY = 0
 

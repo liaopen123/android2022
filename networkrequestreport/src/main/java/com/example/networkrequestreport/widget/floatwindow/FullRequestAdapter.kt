@@ -18,9 +18,8 @@ class FullRequestAdapter(val app:Application,val list:ArrayList<NetworkQueue>?) 
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        Log.e("NetworkQueue22", "NetworkQueue22:${list?.get(position)?.request?.url()?:""}")
-        holder.tv.text = list?.get(position)?.request?.url()?:""
-        holder.tv_time.text = list?.get(position)?.request?.startTime()
+        holder.tv.text = list?.get(position)?.request?.url?:""
+        holder.tv_time.text = list?.get(position)?.request?.startTime
         holder.itemView.setOnClickListener {
             itemClick?.invoke(position)
         }

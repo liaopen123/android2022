@@ -6,7 +6,7 @@ import com.example.networkrequestreport.widget.floatwindow.FloatWindow
 class NetWorkReport {
 
     companion object{
-        var canReport = false
+        var canReport = true
 
         fun startRecorder(app: Application){
             FloatWindow.init(app)

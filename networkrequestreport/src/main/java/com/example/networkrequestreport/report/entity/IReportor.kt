@@ -9,11 +9,9 @@ interface IResponse:CommonPart{
     fun code():Int
     fun message():String
     fun tookTime():Long
-    fun bodySize():String
 
 
 }
-
 interface Headers{
     fun headers() :HashMap<String,String>
 
@@ -40,7 +38,6 @@ interface Headers{
                 !contentEncoding.equals("gzip", ignoreCase = true)
     }
 }
-
 interface CommonPart :Headers{
     fun url():String
     fun method():String
