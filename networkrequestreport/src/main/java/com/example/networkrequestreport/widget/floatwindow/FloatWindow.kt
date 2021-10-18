@@ -24,8 +24,8 @@ class FloatWindow {
 
         @SuppressLint("StaticFieldLeak")
 
-        fun init(app: Application) {
-            Companion.app = app
+        fun init(app: Application?) {
+            this.app = app
         }
 
 
@@ -35,82 +35,35 @@ class FloatWindow {
             }
         }
 
-        private fun detach(activity: Activity, view1: View?) {
-            (activity.window?.decorView as FrameLayout).removeView(view1)
-            app?.unregisterActivityLifecycleCallbacks(callback)
-            app = null
-
-        }
-
 
         val callback = object : Application.ActivityLifecycleCallbacks {
             var activityCount = 1
-            private var view: View? = null
+            private var mView: View? = null
             private var adapter1: FullRequestAdapter? = null
             private var mLayoutParams: ViewGroup.LayoutParams? = null
 
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
-                activityCount++
+
             }
 
             override fun onActivityStarted(activity: Activity) {
+                activityCount++
+
             }
 
             override fun onActivityResumed(activity: Activity) {
-                if (view == null) {
-                    view = LayoutInflater.from(activity).inflate(R.layout.float_view, null, false)
-                }
-                mLayoutParams?.apply {
-                    (view as ViewGroup).getChildAt(0).layoutParams = this
-                }
-                val rv = view?.findViewById<RecyclerView>(R.id.rv)
-                val tv_name = view?.findViewById<TextView>(R.id.tv_name)
-                tv_name?.text = activity::class.java.simpleName
-                rv!!.apply {
-                    layoutManager = LinearLayoutManager(rv.context).apply {
-                        stackFromEnd = true
-                    }
-                    var queue = NetworkReportQueue.getQueue()
-                    adapter1 = FullRequestAdapter(app!!, queue)
-                    rv.adapter = adapter1
-                }
-                view?.findViewById<View>(R.id.ivClose)?.setOnClickListener {
-                    detach(activity, view!!)
-                    view = null
-                }
-                view?.findViewById<View>(R.id.iv_clear)?.setOnClickListener {
-                    NetworkReportQueue.clear()
-                    adapter1?.notifyDataSetChanged()
-                }
-                adapter1?.setOnItemClickListener {
-                    val intent = Intent(app, NetworkDetailsActivity::class.java)
-                    intent.putExtra("position", it)
-                    app?.startActivity(intent)
-                }
-
                 if (activity is NetworkDetailsActivity) {
                     return
                 }
-                view?.apply {
-                    (activity.window?.decorView as FrameLayout).removeView(this)
-                    (activity.window?.decorView as FrameLayout).addView(this)
-                    NetworkReportQueue.observe {
-                        activity.runOnUiThread {
-                            try {
-                                adapter1?.notifyDataSetChanged()
-                                rv.scrollToPosition(adapter1!!.itemCount - 1);
-                            } catch (e: Exception) {
-                                e.printStackTrace()
-                            }
-                        }
-
-                    }
+                if (mView == null) {
+                    mView = createView(activity, mLayoutParams)
                 }
+                (activity.window?.decorView as FrameLayout).removeView(mView)
+                (activity.window?.decorView as FrameLayout).addView(mView)
             }
 
             override fun onActivityPaused(activity: Activity) {
-                view?.apply {
-
+                mView?.apply {
                     mLayoutParams = (this as ViewGroup).getChildAt(0).layoutParams
                     (activity.window?.decorView as FrameLayout).removeView(this)
                 }
@@ -127,10 +80,62 @@ class FloatWindow {
                 activityCount--
                 Log.e("onActivityDestroyed", "${activity::class.java.simpleName} onActivityDestroyed,,,还剩下activityCount:$activityCount")
                 //当没有activity以后  直接detach 防止内存泄漏
-
-                if (activityCount<0) {
-                    detach(activity,view!!)
+                if (activityCount < 0) {
+                    detach(activity, mView)
+                    mView = null
                 }
+            }
+
+
+            fun createView(activity: Activity, layoutParams: ViewGroup.LayoutParams?): View {
+                val view = LayoutInflater.from(activity).inflate(R.layout.float_view, null, false)
+                layoutParams?.apply {
+                    (view as ViewGroup).getChildAt(0).layoutParams = this
+                }
+                val rv = view?.findViewById<RecyclerView>(R.id.rv)
+                val tv_name = view?.findViewById<TextView>(R.id.tv_name)
+                tv_name?.text = activity::class.java.simpleName
+                rv!!.apply {
+                    layoutManager = LinearLayoutManager(rv.context).apply {
+                        stackFromEnd = true
+                    }
+                    var queue = NetworkReportQueue.getQueue()
+                    adapter1 = FullRequestAdapter(app!!, queue)
+                    rv.adapter = adapter1
+                }
+                view.findViewById<View>(R.id.ivClose)?.setOnClickListener {
+                    detach(activity, view)
+                    mView = null
+                }
+                view.findViewById<View>(R.id.iv_clear)?.setOnClickListener {
+                    NetworkReportQueue.clear()
+                    adapter1?.notifyDataSetChanged()
+                }
+                adapter1?.setOnItemClickListener {
+                    val intent = Intent(app, NetworkDetailsActivity::class.java)
+                    intent.putExtra("position", it)
+                    app?.startActivity(intent)
+                }
+                view.apply {
+                    NetworkReportQueue.observe {
+                        activity.runOnUiThread {
+                            try {
+                                adapter1?.notifyDataSetChanged()
+                                rv.scrollToPosition(adapter1!!.itemCount - 1);
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+
+                    }
+                }
+                return view
+            }
+
+            private fun detach(activity: Activity, view1: View?) {
+                (activity.window?.decorView as FrameLayout).removeView(view1)
+                app?.unregisterActivityLifecycleCallbacks(this)
+                app = null
             }
         }
     }
