@@ -1,6 +1,7 @@
 package com.example.networkrequestreport.widget.floatwindow
 
 import android.app.Application
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,11 @@ class FullRequestAdapter(val app:Application,val list:ArrayList<NetworkQueue>?) 
     override fun onBindViewHolder(holder: VH, position: Int) {
         holder.tv.text = list?.get(position)?.request?.url?:""
         holder.tv_time.text = list?.get(position)?.request?.startTime
+        if (list?.get(position)?.response?.code!=200) {
+            holder.tv.setTextColor(Color.parseColor("#ff0000"))
+        }else{
+            holder.tv.setTextColor(Color.parseColor("#666666"))
+        }
         holder.itemView.setOnClickListener {
             itemClick?.invoke(position)
         }

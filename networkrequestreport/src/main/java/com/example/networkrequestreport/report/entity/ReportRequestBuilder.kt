@@ -2,8 +2,6 @@ package com.example.networkrequestreport.report.entity
 
 import android.annotation.SuppressLint
 import com.example.networkrequestreport.report.intercept.internal.isProbablyUtf8
-import kotlinx.android.parcel.Parcelize
-import okhttp3.Headers
 import okhttp3.Interceptor
 import okio.Buffer
 import java.nio.charset.Charset

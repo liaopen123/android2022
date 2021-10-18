@@ -10,7 +10,6 @@ class NetWorkReport {
 
         fun startRecorder(app: Application){
             FloatWindow.init(app)
-            FloatWindow.setContentView()
             FloatWindow.start()
 
 

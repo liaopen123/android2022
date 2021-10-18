@@ -6,7 +6,6 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.networkrequestreport.R
 import com.example.networkrequestreport.report.NetworkReportQueue
-import com.example.networkrequestreport.report.entity.NetworkQueue
 
 class NetworkDetailsActivity : AppCompatActivity() {
 

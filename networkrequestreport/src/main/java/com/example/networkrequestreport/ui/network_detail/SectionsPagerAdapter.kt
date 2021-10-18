@@ -20,9 +20,9 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager,val
 
     override fun getItem(position: Int): Fragment {
        return if (position==0) {
-           PlaceholderFragment(networkQueue.request)
+           NetworkDetailsFragment(networkQueue.request)
         }else{
-           PlaceholderFragment(networkQueue.response)
+           NetworkDetailsFragment(networkQueue.response)
         }
     }
 

@@ -8,7 +8,7 @@
         android:id="@+id/rlContent"
         android:layout_width="180dp"
         android:layout_height="100dp"
-        android:background="@color/black"
+        android:background="@color/translucent"
         android:orientation="vertical">
 
 
@@ -17,10 +17,21 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_alignParentEnd="true"
-            android:padding="10dp"
-            android:src="@mipmap/icon_green_arrow_up" />
-
-
+            android:padding="5dp"
+            android:src="@mipmap/icon_float_close" />
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_clear"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:padding="5dp"
+            android:src="@mipmap/icon_float_clear" />
+<TextView
+    android:id="@+id/tv_name"
+    android:text="name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 
         <com.example.networkrequestreport.widget.floatwindow.ScaleImage
             android:id="@+id/ivScale"
@@ -29,13 +40,16 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:padding="8dp"
-            android:src="@mipmap/icon_green_arrow_down" />
+            android:src="@mipmap/icon_float_expand" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
             android:background="@color/white" />
     </com.example.networkrequestreport.widget.floatwindow.FloatDragLayout>
 </FrameLayout>
