@@ -19,11 +19,11 @@ import com.yuyh.jsonviewer.library.JsonRecyclerView
  * A placeholder fragment containing a simple view.
  */
 class NetworkDetailsFragment(val request: ReportRequest?, val response: ReportResponse?) : Fragment() {
-    constructor(request: ReportRequest) : this(request,null)
-    constructor(response: ReportResponse) : this(null,response)
+    constructor(request: ReportRequest) : this(request, null)
+    constructor(response: ReportResponse) : this(null, response)
 
 
-    val gestureDetector = GestureDetector(activity,object :GestureDetector.OnGestureListener{
+    val gestureDetector = GestureDetector(activity, object : GestureDetector.OnGestureListener {
         override fun onDown(e: MotionEvent?): Boolean {
             return false;
         }
@@ -32,11 +32,11 @@ class NetworkDetailsFragment(val request: ReportRequest?, val response: ReportRe
         }
 
         override fun onSingleTapUp(e: MotionEvent?): Boolean {
-            return true;
+            return true
         }
 
         override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
-            return false;
+            return false
         }
 
         override fun onLongPress(e: MotionEvent?) {
@@ -44,7 +44,7 @@ class NetworkDetailsFragment(val request: ReportRequest?, val response: ReportRe
         }
 
         override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-            return false;
+            return false
         }
     })
 
@@ -55,7 +55,6 @@ class NetworkDetailsFragment(val request: ReportRequest?, val response: ReportRe
     ): View? {
         return inflater.inflate(R.layout.fragment_network_details, container, false)
     }
-
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,29 +69,29 @@ class NetworkDetailsFragment(val request: ReportRequest?, val response: ReportRe
         val tv_contentLength = view.findViewById<TextView>(R.id.tv_contentLength)
         val tv_contentType = view.findViewById<TextView>(R.id.tv_contentType)
         val tv_params = view.findViewById<TextView>(R.id.tv_params)
-            val ll_params = view.findViewById<LinearLayout>(R.id.ll_params)
+        val ll_params = view.findViewById<LinearLayout>(R.id.ll_params)
 
         request?.apply {
             tv_url.text = url
             tv_headers.text = headers.toString()
-            tv_time_value.text =  startTime
-            tv_protocol.text =  protocol
-            tv_method.text =  method
-            tv_contentLength.text =   contentLength
-            tv_contentType.text =  contentType
-            tv_params.text =  params
+            tv_time_value.text = startTime
+            tv_protocol.text = protocol
+            tv_method.text = method
+            tv_contentLength.text = contentLength
+            tv_contentType.text = contentType
+            tv_params.text = params
         }
 
         response?.apply {
             tv_url.text = url
             tv_headers.text = headers.toString()
             tv_time_title.text = "耗时:"
-            tv_time_value.text ="${tookTime}毫秒"
+            tv_time_value.text = "${tookTime}毫秒"
             tv_code.text = "status:"
-            tv_protocol.text =  "${code}"
-            tv_method.text =  method
-            tv_contentLength.text =   contentLength
-            tv_contentType.text =  contentType
+            tv_protocol.text = "${code}"
+            tv_method.text = method
+            tv_contentLength.text = contentLength
+            tv_contentType.text = contentType
             ll_params.visibility = View.GONE
             val mRecyclerView = view.findViewById<JsonRecyclerView>(R.id.rv_json)
             mRecyclerView.bindJson(params)
@@ -106,14 +105,14 @@ class NetworkDetailsFragment(val request: ReportRequest?, val response: ReportRe
 
     private fun setonTextClickListener(rootViewGroup: ViewGroup?) {
         rootViewGroup?.apply {
-            for (index in 0 until this.childCount ){
-                 val view = getChildAt(index)
-                if (view is TextView){
+            for (index in 0 until this.childCount) {
+                val view = getChildAt(index)
+                if (view is TextView) {
                     view.setOnLongClickListener {
                         copy(view.text.toString())
                         true
                     }
-                }else if (view is ViewGroup) {
+                } else if (view is ViewGroup) {
                     setonTextClickListener(view)
                 }
             }
@@ -121,11 +120,11 @@ class NetworkDetailsFragment(val request: ReportRequest?, val response: ReportRe
     }
 
 
-    fun copy(content: String){
+    fun copy(content: String) {
         val cm: ClipboardManager? = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
         val mClipData: ClipData = ClipData.newPlainText("Label", content)
         cm?.primaryClip = mClipData
-        Toast.makeText(context,"复制成功",Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "复制成功", Toast.LENGTH_LONG).show()
     }
 
 

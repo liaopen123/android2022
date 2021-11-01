@@ -1,0 +1,13 @@
+ext {
+    var = [
+            // SDK And Tools
+            minSdkVersion        : 21,
+            targetSdkVersion     : 26,
+
+            compileSdkVersion    : 28,
+            buildToolsVersion    : "28.0.3",
+            supportLibraryVersion: "28.1.1",
+            versionCode          : 50010000,
+            versionName          : "5.10.0"
+    ]
+}

@@ -67,6 +67,7 @@ class FloatWindow {
                     mLayoutParams = (this as ViewGroup).getChildAt(0).layoutParams
                     (activity.window?.decorView as FrameLayout).removeView(this)
                 }
+                mView= null
             }
 
             override fun onActivityStopped(activity: Activity) {
