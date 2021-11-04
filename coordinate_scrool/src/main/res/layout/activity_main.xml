@@ -1,0 +1,40 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- 这里AppBarLayout来包裹滑动之后要执行效果的布局文件。-->
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <!-- 这里Toolbar我想让其滑动行为受到滑动控件的约束。所以用 app:layout_scrollFlags="scroll|enterAlways"-->
+        <androidx.appcompat.widget.Toolbar
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@mipmap/ic_launcher"
+            app:title="Android高级"
+            >
+        </androidx.appcompat.widget.Toolbar>
+        <!-- 这里我想让头布局ImageView也随着滑动控件的滑动而来执行滑动行为所以用app:layout_scrollFlags ，关于scroll和enterAlways的解释自己可以看看api里面解释。滑动和快速反馈之类的....-->
+        <ImageView
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:background="@mipmap/ic_launcher"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_collect"
+            android:layout_width="fill_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:tabMaxWidth="80dp"
+            app:tabGravity="fill"
+            app:tabMode="scrollable" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp_collect"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
