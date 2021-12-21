@@ -2,6 +2,7 @@ package com.example.coordinate_scrool
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
             override fun getPageTitle(position: Int): CharSequence? {
                 return titles[position]
             }
+
+            val text:TextView
 
             override fun getCount()= titles.size
 

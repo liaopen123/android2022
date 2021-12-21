@@ -5,8 +5,7 @@
     android:layout_height="match_parent"
     tools:context=".WebViewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <WebView
+    <com.example.coordinate_scrool.view.NestedScrollWebView
         android:id="@+id/web"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
