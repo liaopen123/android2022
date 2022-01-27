@@ -1,6 +1,0 @@
-<resources>
-
-    <style name="Widget.Android2022.AppWidget.Container" parent="android:Widget">
-        <item name="android:clipToOutline">true</item>
-    </style>
-</resources>

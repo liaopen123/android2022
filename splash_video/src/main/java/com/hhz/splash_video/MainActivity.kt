@@ -55,11 +55,11 @@ class MainActivity : AppCompatActivity() {
         // view. Also set the container view's offset as the origin for the
         // bounds, since that's the origin for the positioning animation
         // properties (X, Y).
-        thumbView.getGlobalVisibleRect(startBoundsInt)
+        thumbView.getGlobalVisibleRect(startBoundsInt)   //小图的位置 用Rect封装
         findViewById<View>(R.id.container)
-            .getGlobalVisibleRect(finalBoundsInt, globalOffset)
-        startBoundsInt.offset(-globalOffset.x, -globalOffset.y)
-        finalBoundsInt.offset(-globalOffset.x, -globalOffset.y)
+            .getGlobalVisibleRect(finalBoundsInt, globalOffset)   //globalOffset的值就是targetView原点偏离屏幕坐标原点的距离。
+        startBoundsInt.offset(-globalOffset.x, -globalOffset.y)  //offset(int dx, int dy)该矩阵在x轴和y轴分别发生的偏移量（很有用，可以上下移动矩阵）
+        finalBoundsInt.offset(-globalOffset.x, -globalOffset.y)  //offset(int dx, int dy)该矩阵在x轴和y轴分别发生的偏移量（很有用，可以上下移动矩阵）
 
         val startBounds = RectF(startBoundsInt)
         val finalBounds = RectF(finalBoundsInt)
