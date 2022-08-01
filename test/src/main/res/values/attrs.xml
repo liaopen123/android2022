@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="HomeTopTabBar">
+        <attr name="htb_default_color" format="color" />
+        <attr name="htb_selected_color" format="color" />
+        <attr name="htb_default_textSize" format="dimension" />
+        <attr name="htb_selected_textSize" format="dimension" />
+        <attr name="htb_default_selected_position" format="integer" />
+    </declare-styleable>
+</resources>

@@ -2,20 +2,23 @@ dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
+        maven { url 'https://jitpack.io' }
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "android2022"
 include ':app'
-include ':floatwindow'
-include ':networkrequestreport'
-include ':diffutils'
-include ':coordinate_scrool'
-include ':splash_video'
-include ':skin'
-include ':logo'
-include ':material'
+//include ':floatwindow'
+//include ':networkrequestreport'
+//include ':diffutils'
+//include ':coordinate_scrool'
+//include ':splash_video'
+//include ':skin'
+//include ':logo'
+//include ':material'
 include ':test'
-include ':apple_watch_luncher'
-include ':motion_layout'
+//include ':apple_watch_luncher'
+//include ':motion_layout'
+include ':layoutmanager'
+include ':desk_widget'

@@ -21,27 +21,20 @@ class Main2Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maint)
-       val vp =  findViewById<ViewPager>(R.id.vp)
-        val recyclerview = findViewById(R.id.recyclerview);
+//       val vp =  findViewById<ViewPager>(R.id.vp)
+//        val recyclerview = findViewById(R.id.recyclerview);
 
-        val ms =  LinearLayoutManager(this);
-        ms.setOrientation(LinearLayoutManager.HORIZONTAL)
+//        val ms =  LinearLayoutManager(this);
+//        ms.setOrientation(LinearLayoutManager.HORIZONTAL)
+//
+//        recyclerview.setLayoutManager(ms);
+//
+//        val snapHelper =  PagerSnapHelper();snapHelper.attachToRecyclerView(recyclerview);//初始化数据
+//
+//        val datas :List<String> =  ArrayList<String>();
 
-        recyclerview.setLayoutManager(ms);
 
-        val snapHelper =  PagerSnapHelper();snapHelper.attachToRecyclerView(recyclerview);//初始化数据
 
-        val datas :List<String> =  ArrayList<String>();
-
-        for (int i = 0; i < 10; i++) {
-
-            datas.add("item " + i);
-
-        }
-
-//设置Adapter
-
-        recyclerview.setAdapter(new GeneralAdapter(this, datas));
 
     }
 

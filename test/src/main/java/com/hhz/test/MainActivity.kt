@@ -14,12 +14,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val tv = findViewById<TextView>(R.id.tv)
-        toggleEllipsizeOriginal(this,
-            tv, 2,
-            "天不错今天天不错今天天不天不错今不错错今不错今天不错今天今天不错今天天不错今天天不错不错",
-            "展开全部",
-            R.color.black, false)
+//        val tv = findViewById<TextView>(R.id.tv)
+//        toggleEllipsizeOriginal(this,
+//            tv, 2,
+//            "天不错今天天不错今天天不天不错今不错错今不错今天不错今天今天不错今天天不错今天天不错不错",
+//            "展开全部",
+//            R.color.black, false)
 
 
     }
