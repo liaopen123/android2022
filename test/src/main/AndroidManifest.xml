@@ -10,9 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android2022">
         <activity
-            android:exported="true"
-            android:name="com.hhz.test.guide.GuideActivity"
-            >
+            android:name=".ViewModelActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,13 +22,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".shimmer.ShimmerMainActivity"
             android:exported="true">
 
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
         </activity>
         <activity
-            android:name=".Main2Activity"
+            android:name=".guide.GuideActivity"
             android:exported="true"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Main2Activity"
+            android:exported="true" />
     </application>
 
 </manifest>

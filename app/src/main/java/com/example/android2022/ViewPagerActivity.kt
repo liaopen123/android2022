@@ -1,7 +1,10 @@
 package com.example.android2022
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 
@@ -15,5 +18,12 @@ class ViewPagerActivity : AppCompatActivity() {
         fragments.add(MyPagerFragment("2"))
         fragments.add(MyPagerFragment1("3"))
         outterViewPager.adapter = MyPagerAdapter2(this,fragments,supportFragmentManager)
+        outterViewPager.setOnClickListener {
+
+        }
+    }
+    fun onClickView(view: View) {
+        Toast.makeText(this@ViewPagerActivity, "22222", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(this,MainActivity3::class.java))
     }
 }

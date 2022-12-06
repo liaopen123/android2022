@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/cl_container"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingHorizontal="2dp"
+    android:layout_height="match_parent">
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/tv_title_unselected"
+        android:textSize="15dp"
+        android:textColor="#999999"
+        android:text="精选"
+        android:paddingHorizontal="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/tv_title_selected"
+        android:textSize="15dp"
+        android:textColor="#333333"
+        android:visibility="invisible"
+        android:textStyle="bold"
+        android:text="精选"
+        android:paddingHorizontal="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/iv_unselected"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_selected"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title_selected"
+        android:scaleType="fitXY"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+    <ImageView
+        android:id="@+id/iv_selected"
+        android:visibility="invisible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_selected"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_title_selected"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Android2022">
         <receiver
+            android:name=".Home"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/home_info" />
+        </receiver>
+        <receiver
             android:name=".TodayHouseCardMin"
             android:exported="false">
             <intent-filter>
