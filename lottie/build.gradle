@@ -21,7 +21,7 @@ android {
                 force "androidx.activity:activity:1.5.0"
                 force "androidx.lifecycle:lifecycle-viewmodel:2.2.0"
                 force "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0"
-                force "androidx.savedstate:savedstate:1.2.0"
+                force "androidx.savedstate:savedstate:1.2.1"
                 force "androidx.emoji2:emoji2-views-helper:1.2.0"
                 force "androidx.emoji2:emoji2:1.2.0"
                 force "androidx.core:core:1.8.0"
